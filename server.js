@@ -24,16 +24,11 @@ server.listen(3000);
 const io = new Server(server);
 io.on('connection', async(socket) => {
 console.log('Someone connect to my server. User id - '  + socket.id);
-    let userNickName = 'user';
     let messages = await db.messages;
-
-    socket.on('set_nickname', (nickname) => {
-       userNickName = nickname;
-
-    })
+    socket.emit('all_messages', messages);
 
     socket.on('new_message', (message) => {
-    console.log(message);
+        db.addMessage(message, 1);
     io.emit('message', userNickName + ':' + message); 
     });
 });
