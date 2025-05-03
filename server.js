@@ -1,8 +1,8 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const db = require("./database");
 const { Server } = require("socket.io");
-
 
 
 const pathToIndex = path.join(__dirname, 'static', 'index.html');
