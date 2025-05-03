@@ -22,9 +22,10 @@ const server = http.createServer((req, res) => {
 server.listen(3000);
 
 const io = new Server(server);
-io.on('connection', (socket) => {
+io.on('connection', async(socket) => {
 console.log('Someone connect to my server. User id - '  + socket.id);
     let userNickName = 'user';
+    let messages = await db.messages;
 
     socket.on('set_nickname', (nickname) => {
        userNickName = nickname;
