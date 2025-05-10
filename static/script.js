@@ -9,7 +9,7 @@ socket.on('all_messages', function(msgArray){
         item.textContent = msg.login + ': ' + msg.content;
         messages.appendChild(item);
     });
-    window.scrollTo(0, document.body,scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
 });
 
 form.addEventListener('submit', function(e) {

@@ -35,18 +35,19 @@ dbWrapper
                 `CREATE TABLE message(
                 msg_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 content TEXT,
-                author INTENGER,
-                FOREIGN KEY(author) REFERENCES user(user_id);`
+                author INTEGER,
+                FOREIGN KEY(author) REFERENCES user(user_id));`
                 );
             
             
         } else {
-            console.log(await db.all ("SELECT * FROM user"))
-    }
-        } catch(dbError) {
-            console.log(dbError);
+            console.log(await db.all ("SELECT * FROM user"));
+            console.log(await db.all ("SELECT * FROM message"));
         }
-                })
+    } catch(dbError) {
+        console.log(dbError);
+    }
+})
                 
                 module.exports = {
                     getMessage: async () => {
@@ -60,8 +61,10 @@ dbWrapper
                         }
                     },
                     addMessage: async (msg, userid) => {
+                        await db.run(
                         `INSERT INTO message (content, author) VALUES (?, ?)`,
                         [msg, userid]
+                        );
                     }
                 };
             
