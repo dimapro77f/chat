@@ -27,6 +27,9 @@ main {
     background-color: var(--color-primary);
     color: var(--color-white);
     height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #form {
@@ -101,3 +104,27 @@ body {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
+.register_form_input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    outline: none;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.register_form_button {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 2rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.register_form_button:hover {
+ box-shadow: 0 0 5px 0 grey;
+ background-color: var(--color-accent-darker);
+}
