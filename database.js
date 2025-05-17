@@ -42,7 +42,6 @@ dbWrapper
             
         } else {
             console.log(await db.all ("SELECT * FROM user"));
-            console.log(await db.all ("SELECT * FROM message"));
         }
     } catch(dbError) {
         console.log(dbError);
