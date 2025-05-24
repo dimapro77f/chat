@@ -31,8 +31,23 @@ const server = http.createServer((req, res) => {
 });
 
 function registerUser(req, res) {
-    
-}
+    let data = '';
+    req.on('data', function(chunk){
+        data += chunk;
+    });
+    req.on('end', async function() {
+        try {
+            const user = JSON.parse(data);
+            if(await db.isUserExist(user.login)){
+                return res.end('User already exist');
+            }
+            await db.addUser(user);
+            return res.end('Registration is succesful');
+        } catch(e) {
+            return res.end('Error: ' + e);
+        }
+    });
+};
 
 server.listen(3000);
 
